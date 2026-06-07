@@ -41,6 +41,9 @@ The goal is to provide a clean, distraction-free environment for developers and 
 <p align="center">A filesystem-native workspace for developers who prefer convenience and <em>control<em> </p>
 
 ---
+
+<img src="READMEIMGS/Screenshot from 2026-06-07 05-16-41.png">
+<img src="READMEIMGS/Screenshot from 2026-06-07 06-21-39.png">
 ## Features
 ###  Implemented (v1 Frontend)
 
@@ -120,7 +123,7 @@ Bismouth aims to sit in between:
 
 ## Screenshots
 
-<img src="READMEIMGS/Screenshot from 2026-06-06 06-14-55.png">
+<img src="READMEIMGS/Screenshot from 2026-06-06 10-47-48.png">
 <img src ="READMEIMGS/Screenshot from 2026-06-06 06-19-27.png">
 
 ---
