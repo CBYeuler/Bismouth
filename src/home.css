@@ -1,0 +1,431 @@
+:root{
+
+    --bg-primary:#0f1117;
+    --bg-surface:#171a21;
+    --bg-card:#1c2028;
+
+    --border:#2a2f3a;
+
+    --text-primary:#ffffff;
+    --text-secondary:#a8b0c0;
+    --text-muted:#6d7688;
+
+    --accent:#3451ff;
+
+    --font-ui:'Syne',sans-serif;
+    --font-mono:'JetBrains Mono',monospace;
+
+    --transition:0.25s ease;
+}
+.folder{
+    color: #FFAE00;
+}
+
+.delete-btn svg {
+    color: #FFAE00;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+
+    background:var(--bg-primary);
+    color:var(--text-primary);
+
+    font-family:var(--font-ui);
+
+    min-height:100vh;
+}
+
+.welcome-screen {
+
+    width: min(900px, 100%);
+
+    min-height: 100vh;
+
+    margin: 0 auto;
+
+    padding: 40px 24px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero{
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+
+    text-align:center;
+}
+
+.hero-logo{
+    
+    width:130px;
+    height:130px;
+
+    
+
+    background:var(--bg-primary);
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    margin-bottom:30px;
+}
+
+.hero-logo svg{
+
+    width:300px;
+    height:300px;
+
+    stroke:var(--accent);
+    stroke-width:1.6;
+}
+
+.hero h1{
+
+    font-size:4rem;
+    font-weight:700;
+
+    line-height:1;
+}
+
+.hero h2{
+
+    margin-top:4px;
+
+    font-size:3rem;
+    font-weight:400;
+
+    color:#c5ccda;
+}
+
+.hero p{
+
+    margin-top:20px;
+
+    font-size:1.15rem;
+
+    color:var(--text-secondary);
+}
+
+.actions{
+
+    display:flex;
+    gap:12px;
+
+    margin-top:48px;
+}
+
+.primary-btn,
+.secondary-btn{
+
+    display:flex;
+    align-items:center;
+    gap:10px;
+
+    padding:15px 24px;
+
+    border:none;
+    border-radius:12px;
+
+    cursor:pointer;
+
+    font-family:var(--font-ui);
+    font-size:1rem;
+    font-weight:600;
+
+    transition:var(--transition);
+}
+
+.primary-btn{
+
+    background:var(--accent);
+    color:white;
+}
+
+.primary-btn:hover{
+
+    transform:translateY(-2px);
+}
+
+.secondary-btn{
+
+    background:var(--bg-surface);
+    color:white;
+
+    border:1px solid var(--border);
+}
+
+.secondary-btn:hover{
+
+    background:#212631;
+}
+
+.ws{
+
+    width:100%;
+    max-width:650px;
+
+    margin-top:80px;
+}
+
+.ws-header{
+
+    display:flex;
+    align-items:center;
+    gap:8px;
+
+    margin-bottom:14px;
+
+    color:var(--text-muted);
+
+    font-size:.9rem;
+    font-weight:600;
+}
+
+.ws-card{
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    background:var(--bg-card);
+
+    border:1px solid var(--border);
+
+    border-radius:14px;
+
+    padding:18px;
+
+    cursor:pointer;
+
+    transition:var(--transition);
+}
+
+.ws-card:hover{
+
+    background:#222833;
+}
+
+.ws-left{
+
+    display:flex;
+    align-items:center;
+
+    gap:14px;
+}
+
+.ws-info{
+
+    display:flex;
+    flex-direction:column;
+}
+
+.ws-name{
+
+    font-size:1.1rem;
+    font-weight:600;
+}
+
+.ws-date{
+
+    margin-top:4px;
+
+    color:var(--text-muted);
+
+    font-size:.9rem;
+}
+
+.delete-btn{
+
+    border:none;
+    background:none;
+
+    color:var(--text-muted);
+
+    cursor:pointer;
+
+    padding:6px;
+
+    border-radius:6px;
+}
+
+.delete-btn:hover{
+
+    background:rgba(255,255,255,.05);
+}
+
+svg{
+
+    width:18px;
+    height:18px;
+}
+
+/* Workspace list items (dynamically rendered) */
+.ws-list-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 18px;
+    cursor: pointer;
+    transition: var(--transition);
+    margin-bottom: 10px;
+}
+
+.ws-list-item:hover { background: #222833; }
+
+.ws-empty {
+    color: var(--text-muted);
+    font-size: .9rem;
+    text-align: center;
+    padding: 24px 0;
+}
+
+/* Modal */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    backdrop-filter: blur(4px);
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease, visibility 0.2s ease;
+}
+
+.modal-overlay.active {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: all;
+}
+.modal {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 32px;
+    width: min(420px, 90vw);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.modal h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.modal p {
+    font-size: .85rem;
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+}
+
+.modal input {
+    background: var(--bg-surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--text-primary);
+    font-family: var(--font-mono);
+    font-size: .95rem;
+    padding: 10px 14px;
+    outline: none;
+    transition: border-color 0.2s ease;
+    margin-top: 4px;
+}
+
+.modal input:focus { border-color: var(--accent); }
+
+.modal-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    margin-top: 8px;
+}
+
+.modal-actions .primary-btn,
+.modal-actions .secondary-btn {
+    padding: 10px 20px;
+    font-size: .9rem;
+}
+
+@media (min-width: 1400px) {
+
+    .hero h1 {
+        font-size: 4.5rem;
+    }
+
+    .hero h2 {
+        font-size: 3.5rem;
+    }
+
+    .ws {
+        max-width: 800px;
+    }
+}
+@media (max-width: 900px) {
+
+    .welcome-screen {
+        padding: 40px 20px;
+    }
+
+    .hero h1 {
+        font-size: 3rem;
+    }
+
+    .hero h2 {
+        font-size: 2.25rem;
+    }
+
+    .actions {
+        flex-direction: column;
+        width: 100%;
+        max-width: 320px;
+    }
+
+    .primary-btn,
+    .secondary-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .ws {
+        width: 100%;
+    }
+}
+
+@media (max-height: 850px) {
+
+    .welcome-screen {
+        padding-top: 40px;
+        padding-bottom: 40px;
+    }
+
+    .hero-logo {
+        margin-bottom: 16px;
+    }
+
+    .actions {
+        margin-top: 24px;
+    }
+
+    .ws {
+        margin-top: 40px;
+    }
+}

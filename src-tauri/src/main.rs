@@ -4,6 +4,7 @@
 use std::fs::{self, File};
 use std::path::{self, Path};
 use serde::Serialize;
+use std::env;
 //use tauri::ipc::InvokeResponse::Ok;
 
 #[derive(Serialize)]
@@ -36,13 +37,20 @@ fn build_tree(path:&Path) ->Vec<FileNode> {
         let entry_path = entry.path();
         let name = entry.file_name().to_string_lossy().to_string();
 
-        if name.starts_with('.') {continue;}
+        if name.starts_with('.') { continue; }
 
         if entry_path.is_dir() {
-            nodes.push(FileNode{
+            nodes.push(FileNode {
                 name,
-                path:entry_path.to_string_lossy().to_string(),
-                is_dir:true,
+                path: entry_path.to_string_lossy().to_string(),
+                is_dir: true,
+                children: build_tree(&entry_path),  // also missing recursive call
+            });
+        } else {
+            nodes.push(FileNode {
+                name,
+                path: entry_path.to_string_lossy().to_string(),
+                is_dir: false,
                 children: vec![],
             });
         }
@@ -102,8 +110,71 @@ fn create_folder(path: String) -> Result<(), String> {
     fs::create_dir_all(&path).map_err(|e| e.to_string())
 }
 
+#[tauri::command]
+fn get_app_dir() -> Result<String, String> {
+    let home = env::var("HOME").map_err(|e| e.to_string())?;
+    let app_dir = format!("{}/Documents/Bismuth", home);
+    fs::create_dir_all(&app_dir).map_err(|e| e.to_string())?;
+    Ok(app_dir)
+}
+
+#[tauri::command]
+fn create_workspace(name: String) -> Result<String, String> {
+    let home = env::var("HOME").map_err(|e| e.to_string())?;
+    let workspace_path = format!("{}/Documents/Bismuth/{}", home, name);
+    fs::create_dir_all(&workspace_path).map_err(|e| e.to_string())?;
+    Ok(workspace_path)
+}
+
+#[tauri::command]
+fn list_workspaces() -> Result<Vec<serde_json::Value>, String> {
+    let home = env::var("HOME").map_err(|e| e.to_string())?;
+    let app_dir = format!("{}/Documents/Bismuth", home);
+    fs::create_dir_all(&app_dir).map_err(|e| e.to_string())?;
+
+    let entries = fs::read_dir(&app_dir).map_err(|e| e.to_string())?;
+    let mut workspaces = vec![];
+
+    for entry in entries.filter_map(|e| e.ok()) {
+        let path = entry.path();
+        if path.is_dir() {
+            let name = entry.file_name().to_string_lossy().to_string();
+            if name.starts_with('.') { continue; }
+
+            let modified = entry.metadata()
+                .and_then(|m| m.modified())
+                .map(|t| {
+                    t.duration_since(std::time::UNIX_EPOCH)
+                        .unwrap_or_default()
+                        .as_secs()
+                })
+                .unwrap_or(0);
+
+            workspaces.push(serde_json::json!({
+                "name": name,
+                "path": path.to_string_lossy(),
+                "modified": modified
+            }));
+        }
+    }
+
+    workspaces.sort_by(|a, b| {
+        b["modified"].as_u64().unwrap_or(0)
+            .cmp(&a["modified"].as_u64().unwrap_or(0))
+    });
+
+    Ok(workspaces)
+}
+
+#[tauri::command]
+fn delete_workspace(path: String) -> Result<(), String> {
+    fs::remove_dir_all(&path).map_err(|e| e.to_string())
+}
+
 fn main() {
     tauri::Builder::default()
+        .plugin(tauri_plugin_fs::init())
+        .plugin(tauri_plugin_dialog::init())
         .invoke_handler(tauri::generate_handler![
             read_dir_tree,
             read_note,
@@ -112,6 +183,10 @@ fn main() {
             rename_note,
             create_note,
             create_folder,
+            get_app_dir, 
+            create_workspace, 
+            list_workspaces, 
+            delete_workspace,
         ])
         .run(tauri::generate_context!())
         .expect("error running Tauri app");
