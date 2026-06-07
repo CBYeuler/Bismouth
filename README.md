@@ -13,10 +13,10 @@
 
 <p align="center">
 
-[![Build Status](https://img.shields.io/github/actions/workflow/status/YOUR_USERNAME/YOUR_REPO/ci.yml?style=for-the-badge)](https://github.com/YOUR_USERNAME/YOUR_REPO/actions)
-[![Releases](https://img.shields.io/github/v/release/YOUR_USERNAME/YOUR_REPO?style=for-the-badge)](https://github.com/YOUR_USERNAME/YOUR_REPO/releases)
-[![Downloads](https://img.shields.io/github/downloads/YOUR_USERNAME/YOUR_REPO/total?style=for-the-badge)](https://github.com/YOUR_USERNAME/YOUR_REPO/releases)
-[![License](https://img.shields.io/github/license/YOUR_USERNAME/YOUR_REPO?style=for-the-badge)](LICENSE)
+[![Build Status](https://img.shields.io/github/actions/workflow/status/CBYeuler/Bismouth/ci.yml?style=for-the-badge)](https://github.com/CBYeuler/Bismouth/actions)
+[![Releases](https://img.shields.io/github/v/release/CBYeuler/Bismouth?style=for-the-badge)](https://github.com/CBYeuler/Bismouth/releases)
+[![Downloads](https://img.shields.io/github/downloads/CBYeuler/Bismouth/total?style=for-the-badge)](https://github.com/CBYeuler/Bismouth/releases)
+[![License](https://img.shields.io/github/license/CBYeuler/Bismouth?style=for-the-badge)](LICENSE)
 
 [![Tauri](https://img.shields.io/badge/Tauri-FFC131?style=for-the-badge&logo=tauri&logoColor=black)](https://tauri.app)
 [![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)](https://developer.mozilla.org)
