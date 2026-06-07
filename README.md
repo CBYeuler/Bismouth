@@ -143,6 +143,9 @@ On Linux you'll also need:
 ```bash
 sudo apt install libwebkit2gtk-4.1-dev libappindicator3-dev librsvg2-dev patchelf
 ```
+**On Windows:**
+- [Microsoft Visual Studio C++ Build Tools](https://visualstudio.microsoft.com/visual-cpp-build-tools/) — select "Desktop development with C++" workload
+- WebView2 is pre-installed on Windows 10/11. If missing: [download here](https://developer.microsoft.com/en-us/microsoft-edge/webview2/)
 
 ### Installation
 
