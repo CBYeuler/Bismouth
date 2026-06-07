@@ -188,6 +188,9 @@ This project is currently in early development. Contributions, ideas, and feedba
 
 ##  License
 
+This project is licensed under the MIT License.
+
+See the full license text in the [LICENSE](LICENSE) file.
 
 ---
 
