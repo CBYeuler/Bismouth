@@ -133,14 +133,34 @@ Bismouth aims to sit in between:
 
 ## Getting Started
 
-### Development Mode
+### Prerequisites
+
+- [Node.js](https://nodejs.org/) v18+
+- [Rust](https://www.rust-lang.org/tools/install) (latest stable)
+- [Tauri CLI](https://tauri.app/start/prerequisites/)
+
+On Linux you'll also need:
+```bash
+sudo apt install libwebkit2gtk-4.1-dev libappindicator3-dev librsvg2-dev patchelf
+```
+
+### Installation
 
 ```bash
+# Clone the repo
+git clone https://github.com/CBYeuler/Bismouth.git
+cd Bismouth/my-tauri-app
+
+# Install dependencies
 npm install
+
+# Run in development mode
 npm run tauri dev
 ```
 
-### Build
+> **Note:** When prompted by the Tauri scaffold, select **Vanilla JS** — React migration is planned for v1.
+
+### Build for production
 
 ```bash
 npm run tauri build
@@ -148,21 +168,24 @@ npm run tauri build
 
 ---
 
-##  Project Structure
+## Project Structure
 
 ```
-
-src/
-├── frontend/
-│   ├── index.html
-│   ├── style.css
-│   └── app.js
+my-tauri-app/
+├── src/                    # Frontend (Vanilla JS)
+│   ├── index.html          # Editor view
+│   ├── main.js             # Editor logic
+│   ├── styles.css          # Editor styles
+│   ├── home.html           # Welcome screen
+│   ├── home.js             # Workspace management
+│   └── home.css            # Welcome screen styles
 │
-src-tauri/
-├── src/
-├── Cargo.toml
-└── tauri.conf.json
-
+└── src-tauri/              # Tauri / Rust backend
+    ├── src/
+    │   ├── main.rs         # Rust commands (filesystem CRUD)
+    │   └── lib.rs          # Cargo lib entry point
+    ├── Cargo.toml
+    └── tauri.conf.json
 ```
 
 ---
