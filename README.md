@@ -20,6 +20,7 @@
 [![Linux](https://img.shields.io/badge/Linux-Supported-FCC624?style=for-the-badge&logo=linux&logoColor=black)](#)
 [![Tauri](https://img.shields.io/badge/Tauri-FFC131?style=for-the-badge&logo=tauri&logoColor=black)](https://tauri.app)
 [![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)](https://developer.mozilla.org)
+[![Last Commit](https://img.shields.io/github/last-commit/CBYeuler/Bismouth?style=for-the-badge)](https://github.com/CBYeuler/Bismouth/commits/main)
 
 </p>
 
