@@ -174,7 +174,7 @@ npm run tauri build
 ## Project Structure
 
 ```
-my-tauri-app/
+Bismuth/
 ├── src/                    # Frontend (Vanilla JS)
 │   ├── index.html          # Editor view
 │   ├── main.js             # Editor logic
@@ -190,7 +190,34 @@ my-tauri-app/
     ├── Cargo.toml
     └── tauri.conf.json
 ```
-
+```
+src-tauri/src/
+├── main.rs       
+├── lib.rs                 
+├── commands/         
+│   ├── mod.rs
+│   ├── workspace.rs      
+│   ├── notes.rs         
+│   ├── filesystem.rs    
+│   └── terminal.rs     
+├── models/               
+│   ├── mod.rs
+│   ├── workspace.rs       
+│   ├── note.rs           
+│   └── response.rs        
+├── services/             
+│   ├── mod.rs
+│   ├── workspace_service.rs    
+│   ├── note_service.rs        
+│   ├── filesystem_service.rs   
+│   └── terminal_service.rs     
+├── utils/                 
+│   ├── mod.rs
+│   ├── error.rs            
+│   ├── path.rs            
+│   └── config.rs          
+└── build.rs
+```
 ---
 
 ##  Roadmap
