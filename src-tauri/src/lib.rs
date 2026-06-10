@@ -1,1 +1,4 @@
-// intentionally empty — all commands live in main.rs
+pub mod commands;
+pub mod models;
+pub mod services;
+pub mod utils;
