@@ -40,6 +40,8 @@ It combines:
 
 The goal is to provide a clean, distraction-free environment for developers and technical users who want full control over their data.
 
+<img src="READMEIMGS/Bismuth.gif">
+
 ---
 <p align="center">A filesystem-native workspace for developers who prefer convenience and <em>control<em> </p>
 
