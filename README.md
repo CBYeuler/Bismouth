@@ -49,6 +49,9 @@ The goal is to provide a clean, distraction-free environment for developers and 
 
 <img src="READMEIMGS/Screenshot from 2026-06-07 05-16-41.png">
 <img src="READMEIMGS/Screenshot from 2026-06-07 06-21-39.png">
+
+---
+
 ## Features
 ###  Implemented (v1 Frontend)
 
@@ -96,7 +99,7 @@ Each workspace is a self-contained directory on the user’s machine.
 
 * **Frontend:** React
 * **Desktop Runtime:** Tauri
-* **Backend (planned):** Rust (filesystem + process management)
+* **Backend:** Rust (filesystem + process management)
 * **Terminal:** PTY integration (xterm.js + backend bridge planned)
 
 ---
