@@ -853,7 +853,7 @@ svg { width: 18px; height: 18px; }
     border-radius: 3px;
 }
 
-/* ── Context menu ──────────────────────────────────────── */
+
 .ctx-menu {
     position: fixed;
     background: var(--bg-surface);
