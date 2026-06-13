@@ -1,6 +1,23 @@
 # Changelog
 
 All notable changes to this project will be documented in this file.
+## [0.1.2] - 2026-06-13
+
+### Added
+* Integrated Tiptap rich markdown editor into the application.
+* Introduced formatting toolbar for easier text editing (bold, italic, headings, lists, code blocks).
+
+  
+### Fixed
+* Fixed file creation, deletion, and folder handling in the file explorer.
+* Improved stability of workspace file tree operations.
+* Resolved issues caused during Git rebase conflicts.
+### Changed
+* Cleaned commit history after resolving rebase conflicts.
+* Improved overall editor workflow and usability after Tiptap integration.
+### Notes
+* This release includes a force-pushed history reset to maintain a clean and consistent commit structure after resolving merge/rebase conflicts.
+* Core functionality remains unchanged, but editor and explorer reliability has been improved significantly.
 
 ## [0.1.1] - 2026-06-10
 
@@ -35,20 +52,19 @@ All notable changes to this project will be documented in this file.
 * Basic note organization and navigation.
 * Modern desktop interface built with Tauri.
 * Local-first workflow with filesystem-based storage.
-
+---
 ### Planned
 
 The following features are planned for future releases:
 
-* Markdown export (.md)
-* Rich Note Taking Alterations
+
 * PDF export with formatting preservation
 * Mermaid diagram integration
-* Keyboard shortcuts
+
 * Git integration
-* File tree explorer
+
 * Graph view
 * Code block support
 * Jupyter Notebook (.ipynb) support
 * Integrated PTY terminal
-* React frontend migration
+
