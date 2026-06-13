@@ -1,9 +1,8 @@
 import { useState, useEffect } from 'react'
 import { useWorkspace } from '../../context/WorkspaceContext'
-import { readDirTree } from '../../lib/tauri'
+import { readDirTree, createNote, createFolder } from '../../lib/tauri'
 import TreeItem from './TreeItem'
 import { FilePlus, FolderPlus } from 'lucide-react'
-import { createNote, createFolder } from '../../lib/tauri'
 
 export default function Sidebar({ isOpen }) {
     const { currentWorkspace } = useWorkspace()
@@ -24,8 +23,11 @@ export default function Sidebar({ isOpen }) {
 
     async function handleNewNote() {
         if (!currentWorkspace) return
+        // Generate unique name by appending timestamp if needed
+        const base = currentWorkspace + '/untitled'
+        const path = base + '-' + Date.now() + '.md'
         try {
-            await createNote(currentWorkspace + '/untitled.md')
+            await createNote(path)
             await loadTree()
         } catch (err) {
             console.error(err)
@@ -34,8 +36,9 @@ export default function Sidebar({ isOpen }) {
 
     async function handleNewFolder() {
         if (!currentWorkspace) return
+        const path = currentWorkspace + '/new-folder-' + Date.now()
         try {
-            await createFolder(currentWorkspace + '/new-folder')
+            await createFolder(path)
             await loadTree()
         } catch (err) {
             console.error(err)

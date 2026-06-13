@@ -852,3 +852,53 @@ svg { width: 18px; height: 18px; }
     background: var(--border-color);
     border-radius: 3px;
 }
+
+/* ── Context menu ──────────────────────────────────────── */
+.ctx-menu {
+    position: fixed;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 4px;
+    z-index: 2000;
+    min-width: 160px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
+.ctx-menu button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    padding: 6px 10px;
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    font-family: var(--font-ui);
+    font-size: 13px;
+    cursor: pointer;
+    border-radius: var(--radius-sm);
+    text-align: left;
+    transition: background var(--transition), color var(--transition);
+}
+
+.ctx-menu button:hover {
+    background: var(--bg-hover);
+    color: var(--text-primary);
+}
+
+.ctx-menu button svg {
+    width: 13px;
+    height: 13px;
+    stroke: currentColor;
+    flex-shrink: 0;
+}
+
+.ctx-menu .ctx-delete { color: var(--error); }
+.ctx-menu .ctx-delete:hover { background: var(--bg-hover); }
+
+.ctx-divider {
+    height: 1px;
+    background: var(--border-color);
+    margin: 4px 0;
+}
