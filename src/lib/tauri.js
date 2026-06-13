@@ -1,0 +1,12 @@
+const invoke = (...args) => window.__TAURI__.core.invoke(...args)
+
+export const readDirTree      = (path)              => invoke('read_dir_tree',   { path })
+export const readNote         = (path)              => invoke('read_note',        { path })
+export const writeNote        = (path, content)     => invoke('write_note',       { path, content })
+export const deleteNote       = (path)              => invoke('delete_note',      { path })
+export const renameNote       = (oldPath, newPath)  => invoke('rename_note',      { oldPath, newPath })
+export const createNote       = (path)              => invoke('create_note',      { path })
+export const createFolder     = (path)              => invoke('create_folder',    { path })
+export const listWorkspaces   = ()                  => invoke('list_workspaces')
+export const createWorkspace  = (name)              => invoke('create_workspace', { name })
+export const deleteWorkspace  = (path)              => invoke('delete_workspace', { path })
