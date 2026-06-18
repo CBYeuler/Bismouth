@@ -6,7 +6,11 @@ import Sidebar from '../components/Sidebar/Sidebar'
 import Editor from '../components/Editor/Editor'
 import StatusBar from '../components/StatusBar/StatusBar'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
+import Terminal from '../components/Terminal/Terminal'
+import '../components/Terminal/Terminal.css'
 
+
+const [terminalOpen, setTerminalOpen] = useState(false)
 export default function EditorScreen() {
     const { currentWorkspace, currentFile } = useWorkspace()
     const [sidebarOpen, setSidebarOpen] = useState(true)
@@ -18,6 +22,9 @@ export default function EditorScreen() {
             if (e.ctrlKey && e.key.toLowerCase() === 'b') {
                 e.preventDefault()
                 setSidebarOpen(prev => !prev)
+            } else if (e.ctrlKey && e.key ==='`') {
+                e.preventDefault()
+                setTerminalOpen(prev => !prev)
             }
         }
         document.addEventListener('keydown', handler)
@@ -45,6 +52,7 @@ export default function EditorScreen() {
                         onWordsChange={setWordCount}
                         onCharsChange={setCharCount}
                     />
+                    {terminalOpen && <Terminal isOpen={terminalOpen}/>}
                 </main>
             </div>
             <StatusBar wordCount={wordCount} charCount={charCount} />

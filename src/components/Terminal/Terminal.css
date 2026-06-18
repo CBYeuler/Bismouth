@@ -1,0 +1,36 @@
+.terminal-panel {
+    display: flex;
+    flex-direction: column;
+    height: 280px;
+    background: var(--bg-primary);
+    border-top: 1px solid var(--border-color);
+    flex-shrink: 0;
+}
+
+.terminal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 4px 16px;
+    background: var(--bg-surface);
+    border-bottom: 1px solid var(--border-color);
+    font-size: 11px;
+    font-family: var(--font-mono);
+    color: var(--text-muted);
+    flex-shrink: 0;
+}
+
+.terminal-cwd {
+    color: var(--accent);
+    font-size: 10px;
+}
+
+.terminal-body {
+    flex: 1;
+    padding: 8px;
+    overflow: hidden;
+}
+
+.terminal-body .xterm {
+    height: 100%;
+}
