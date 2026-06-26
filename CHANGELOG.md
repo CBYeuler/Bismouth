@@ -1,6 +1,49 @@
 # Changelog
 
 All notable changes to this project will be documented in this file.
+## [0.2.0] - 2026-06-26
+
+### Added
+
+#### PTY Terminal Integration
+
+* Added an integrated terminal panel powered by xterm.js and Rust portable-pty.
+* Added terminal toggle support through Ctrl+` shortcut and status bar controls.
+* Terminal sessions automatically open inside the currently active workspace directory.
+* Added lazy terminal initialization to prevent unnecessary resource usage when unused.
+* Added real-time terminal output streaming through Tauri events.
+* Added cross-platform PTY support:
+  * ConPTY support for Windows.
+  * POSIX PTY support for Linux.
+
+### Improved
+
+* Improved developer workflow by combining workspace management, notes, and terminal functionality.
+* Improved backend architecture with dedicated terminal services and models.
+* Added centralized terminal state management through Tauri application state.
+* Added frontend terminal lifecycle management through a dedicated React hook.
+
+### Fixed
+
+* Fixed workspace explorer issues.
+* Fixed note creation, deletion, and renaming edge cases.
+* Improved overall stability after React migration.
+
+### Technical
+
+* Added terminal module separation:
+  * `commands/` handles Tauri command interfaces.
+  * `services/` handles terminal business logic.
+  * `models/` handles terminal data structures.
+* Continued Rust backend modularization for future developer tooling.
+
+### Known Limitations
+
+* Markdown export is still in development.
+* PDF export is still in development.
+* Advanced terminal features such as multiple sessions are planned for future releases.
+
+
 ## [0.1.2] - 2026-06-13
 
 ### Added
