@@ -4,13 +4,15 @@
 //   - spawn_shell(cwd: &str) -> AppResult<u32>   (returns PID)
 //   - send_input(pid: u32, input: &str) -> AppResult<()>
 //   - kill_shell(pid: u32) -> AppResult<()>
- use std::collections::HashMap;
- use std::io::{Read, Write};
- use std::sync::{Arc, Mutex};
- use portable_pty::{CommandBuilder, PtySize, native_pty_system};
- use tauri::{AppHandle, Manager};
- use uuid::Uuid;
- use crate::commands::workspace;
+use std::collections::HashMap;
+use std::io::{Read, Write};
+use std::sync::{Arc, Mutex};
+use portable_pty::{CommandBuilder, PtySize, native_pty_system};
+use tauri::{AppHandle, Manager};
+use uuid::Uuid;
+use crate::commands::workspace;
+use tauri::Emitter;
+use tauri::State;
 use crate::models::terminal::TerminalSession;
 
 
@@ -95,13 +97,16 @@ pub fn write_input(
     let store = app.state::<TerminalStore>();
     let store = store.0.lock().unwrap();
     let session = store.get(&id).ok_or("Terminal session not found")?;
-    session.writer
-        .lock()
-        .unwrap()
-        .write_all(input.as_bytes())
-        .map_err(|e| e.to_string())
-}
 
+    {
+        let mut writer = session.writer.lock().unwrap();
+        writer
+            .write_all(input.as_bytes())
+            .map_err(|e| e.to_string())?;
+    }
+
+    Ok(())
+}
 pub fn resize_terminal(
     app: AppHandle,
     id: String,

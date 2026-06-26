@@ -5,7 +5,7 @@ pub struct TerminalSession {
     pub workspace_path: String,
     pub writer: Arc<Mutex<Box<dyn std::io::Write + Send>>>,
     pub _child: Box<dyn portable_pty::Child + Send>,
-    pub _master: Box<dyn portable_pty::MasterPTY + Send>,
+    pub _master: Box<dyn portable_pty::MasterPty + Send>,
 }
 
 

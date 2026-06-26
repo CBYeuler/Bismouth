@@ -10,8 +10,9 @@ import Terminal from '../components/Terminal/Terminal'
 import '../components/Terminal/Terminal.css'
 
 
-const [terminalOpen, setTerminalOpen] = useState(false)
+
 export default function EditorScreen() {
+    const [terminalOpen, setTerminalOpen] = useState(false)
     const { currentWorkspace, currentFile } = useWorkspace()
     const [sidebarOpen, setSidebarOpen] = useState(true)
     const [wordCount, setWordCount]     = useState(0)
@@ -55,7 +56,10 @@ export default function EditorScreen() {
                     {terminalOpen && <Terminal isOpen={terminalOpen}/>}
                 </main>
             </div>
-            <StatusBar wordCount={wordCount} charCount={charCount} />
+            <StatusBar wordCount={wordCount} 
+            charCount={charCount} 
+            onToggleTerminal={() => setTerminalOpen(prev => !prev)}
+            />
         </div>
     )
 }

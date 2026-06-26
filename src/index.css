@@ -902,3 +902,11 @@ svg { width: 18px; height: 18px; }
     background: var(--border-color);
     margin: 4px 0;
 }
+.statusbar-terminal-btn {
+    cursor: pointer;
+    color: var(--text-muted);
+    transition: color var(--transition);
+}
+.statusbar-terminal-btn:hover {
+    color: var(--accent);
+}
