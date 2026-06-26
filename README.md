@@ -35,7 +35,7 @@ It combines:
 
 * Markdown-based notes
 * Workspace-based file organization
-* A terminal-ready environment (PTY support planned/partial)
+* A terminal-ready environment 
 * Fast, local filesystem-first architecture
 
 The goal is to provide a clean, distraction-free environment for developers and technical users who want full control over their data.
