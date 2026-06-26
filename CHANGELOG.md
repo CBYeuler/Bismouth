@@ -95,6 +95,8 @@ All notable changes to this project will be documented in this file.
 * Basic note organization and navigation.
 * Modern desktop interface built with Tauri.
 * Local-first workflow with filesystem-based storage.
+* Integrated PTY terminal
+* Git integration
 ---
 ### Planned
 
@@ -104,10 +106,10 @@ The following features are planned for future releases:
 * PDF export with formatting preservation
 * Mermaid diagram integration
 
-* Git integration
+
 
 * Graph view
 * Code block support
 * Jupyter Notebook (.ipynb) support
-* Integrated PTY terminal
+
 
