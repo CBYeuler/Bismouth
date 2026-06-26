@@ -63,9 +63,9 @@ The goal is to provide a clean, distraction-free environment for developers and 
 * Tauri integration (completed shell migration)
 * Workspace CRUD operations
 * Note persistence (filesystem-based)
-
-### In Progress
 * PTY terminal integration
+
+
 
 ### Planned
 
@@ -130,7 +130,7 @@ Bismuth aims to sit in between:
 
 ## Screenshots
 
-<img src="READMEIMGS/Screenshot from 2026-06-06 10-47-48.png">
+<img src="READMEIMGS/Screenshot from 2026-06-26 14-31-57.png">
 <img src ="READMEIMGS/Screenshot from 2026-06-06 06-19-27.png">
 
 ---
@@ -231,7 +231,7 @@ src-tauri/src/
 * [x] Tauri migration
 * [x] Workspace CRUD
 * [x] Note persistence
-* [ ] PTY terminal
+* [x] PTY terminal
 * [ ] File tree explorer
 * [ ] Graph view
 * [ ] Export system
