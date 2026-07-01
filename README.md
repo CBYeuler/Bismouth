@@ -156,7 +156,7 @@ sudo apt install libwebkit2gtk-4.1-dev libappindicator3-dev librsvg2-dev patchel
 
 ```bash
 # Clone the repo
-git clone https://github.com/CBYeuler/Bismouth.git
+git clone https://github.com/CBYeuler/Bismuth.git
 cd Bismuth-main
 
 # Install dependencies
