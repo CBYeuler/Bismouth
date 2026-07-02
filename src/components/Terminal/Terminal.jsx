@@ -35,15 +35,15 @@ export default function Terminal({ isOpen }) {
         term.loadAddon(fitAddon)
         term.open(containerRef.current)
         fitAddon.fit()
-
+        term.focus()
         xtermRef.current    = term
         fitAddonRef.current = fitAddon
-
+        // Forward key input to PTY
+        term.onData((data) => sendInput(data))
         // Start PTY
         start(term)
 
-        // Forward key input to PTY
-        term.onData((data) => sendInput(data))
+        
 
         // Resize observer
         const observer = new ResizeObserver(() => {
@@ -66,7 +66,10 @@ export default function Terminal({ isOpen }) {
                 <span>Terminal</span>
                 <span className="terminal-cwd">{currentWorkspace}</span>
             </div>
-            <div ref={containerRef} className="terminal-body" />
+            <div ref={containerRef} 
+            className="terminal-body" 
+            onClick={()=>xtermRef.current?.focus()}
+            />
         </div>
     )
 }
